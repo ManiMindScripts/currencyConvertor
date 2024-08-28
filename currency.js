@@ -1,7 +1,6 @@
 const apiKey = "ff80c8abd3b787e5a8698bfa"
 const BASE_URL =
-              "https://v6.exchangerate-api.com/v6/ff80c8abd3b787e5a8698bfa/latest/USD"
-    // "https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies";
+              `https://v6.exchangerate-api.com/v6/${apiKey}/latest/`
 
 const dropDowns = document.querySelectorAll(".drop-down select")
 const btn= document.querySelector("form button")
@@ -43,8 +42,9 @@ btn.addEventListener("click", async (evet) => {
         amount.value = "1"
     }
     /// api ///////
+  const URL = `${BASE_URL}${fromCurr.value}`;
     try {
-        let response = await fetch(BASE_URL);
+        let response = await fetch(URL);
         if (!response.ok) {
             throw new Error("Failed to fetch exchange rate.");
         }
